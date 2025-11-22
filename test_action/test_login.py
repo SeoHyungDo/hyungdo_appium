@@ -56,8 +56,7 @@ class TestLoginPage(passclass):
     def test_robot_image_check(self):
         assert self.swag.robot_image_visible() == True # 하단에 로봇 이미지 노출되면 PASS
 
-
-    def test_login_check(self):
+    def test_login_cart_exist(self): # test_login.py 단에서는 로그인 후 카트 메뉴 존재까지만 확인한다.
         self.swag.type_Username("standard_user")
         self.swag.type_pw("secret_sauce")
         self.swag.login_button.click() # 정상 로그인

@@ -2,6 +2,8 @@ import pytest
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from root_obj.login_page_obj import swaglabs_home
+from root_obj.main_page_obj import swaglabs_main_page
+from utility.wait import Wait
 
 @pytest.fixture(scope="class")
 def setup(request):
@@ -22,6 +24,8 @@ def setup(request):
 
     request.cls.driver = driver
     request.cls.swag = swaglabs_home(driver)
+    request.cls.swag_home = swaglabs_main_page(driver)
+    request.cls.wait = Wait(driver)
 
     yield driver
 
