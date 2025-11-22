@@ -5,63 +5,61 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 from root_obj.login_page_obj import swaglabs_home
-from utility.passclass import passclass   # 아까 만든 BaseTest
+from utility.passclass import passclass
 from root_obj import login_page_obj
 
 class TestLoginPage(passclass):
 
 
-    def test_login_page(self):
-        driver = self.driver
-        swaglabs = swaglabs_home(self.driver)
+    def clear(self, id_pw):
+        id_pw.click()
+        id_pw.clear()
 
-        def clear(id_pw):
-            id_pw.click()
-            id_pw.clear()
+    def test_logo_check(self) :
+        assert self.swag.logo_visible() == True # 상단 로고가 노출되면 PASS
+        assert self.swag.input_id_placeholder == "Username" # ID Inputbox에 "Username" Text 노출되면 PASS
+        assert self.swag.input_pw_placeholder == "Password" # PW Inputbox에 "Username" Text 노출되면 PASS
 
         error_msg_email_not_exist = "Username is required"
         error_msg_password_not_exist = "Password is required"
         error_msg_lock_account = "Sorry, this user has been locked out."
         error_msg_id_pw_not_equal = "Username and password do not match any user in this service."
+        Login_button_text = "LOGIN"
 
-        swaglabs.login_button.click()
-        assert swaglabs.login_err_msg_text() == error_msg_email_not_exist # "Username is required" 노출시 정상
+        self.swag.login_button.click()
+        assert self.swag.login_err_msg_text() == error_msg_email_not_exist # "Username is required" 노출시 정상
 
-        clear(swaglabs.input_id), clear(swaglabs.input_pw)
+        self.clear(self.swag.input_id), self.clear(self.swag.input_pw)
 
-        swaglabs.input_id.click()
-        swaglabs.input_id.send_keys("standard_user")
-        swaglabs.login_button.click()
-        assert swaglabs.login_err_msg_text() == error_msg_password_not_exist  # "password is required" 노출시 정상
+        self.swag.type_id("standard_user")
+        self.swag.login_button.click()
+        assert self.swag.login_err_msg_text() == error_msg_password_not_exist  # "password is required" 노출시 정상
 
-        clear(swaglabs.input_id), clear(swaglabs.input_pw)
+        self.clear(self.swag.input_id), self.clear(self.swag.input_pw)
 
-        swaglabs.input_id.click()
-        swaglabs.input_id.send_keys("locked_out_user")
-        swaglabs.input_pw.click()
-        swaglabs.input_pw.send_keys("secret_sauce")
-        swaglabs.login_button.click()
-        assert swaglabs.login_err_msg_text() == error_msg_lock_account  # "Sorry, this user has been locked out." 노출시 정상
+        self.swag.type_id("locked_out_user")
+        self.swag.type_pw("secret_sauce")
+        self.swag.login_button.click()
+        assert self.swag.login_err_msg_text() == error_msg_lock_account  # "Sorry, this user has been locked out." 노출시 정상
 
-        clear(swaglabs.input_id), clear(swaglabs.input_pw)
+        self.clear(self.swag.input_id), self.clear(self.swag.input_pw)
 
-        swaglabs.input_id.click()
-        swaglabs.input_id.send_keys("standard_user")
-        swaglabs.input_pw.click()
-        swaglabs.input_pw.send_keys("secret_sauc")
-        swaglabs.login_button.click()
-        assert swaglabs.login_err_msg_text() == error_msg_id_pw_not_equal  # "Username and password do not match any user in the service." 노출시 정상
+        self.swag.type_id("standard_user")
+        self.swag.type_pw("secret_sauc")
+        self.swag.login_button.click()
+        assert self.swag.login_err_msg_text() == error_msg_id_pw_not_equal  # "Username and password do not match any user in the service." 노출시 정상
 
-        clear(swaglabs.input_id), clear(swaglabs.input_pw)
+        assert self.swag.face_check_button_visible() == True # 하단에 Facecheck 버튼이 존재한다면 PASS
+        assert self.swag.login_button_name() == Login_button_text # LOGIN 이름과 일치하는 로그인 버튼이 있는 경우 PASS
+        assert self.swag.robot_image_visible() == True # 하단에 로봇 이미지 노출되면 PASS
 
-        swaglabs.input_id.click()
-        swaglabs.input_id.send_keys("standard_user")
+        self.clear(self.swag.input_id), self.clear(self.swag.input_pw)
 
-        swaglabs.input_pw.click()
-        swaglabs.input_pw.send_keys("secret_sauce")
-        swaglabs.login_button.click() # 정상 로그인
+        self.swag.type_id("standard_user")
+        self.swag.type_pw("secret_sauce")
+        self.swag.login_button.click() # 정상 로그인
 
-        cart = WebDriverWait(driver, 10).until(
+        cart = WebDriverWait(self.driver, 10).until(
             EC.presence_of_element_located(
                 (AppiumBy.ACCESSIBILITY_ID, "test-Cart")
             )
