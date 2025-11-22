@@ -10,52 +10,55 @@ from root_obj import login_page_obj
 
 class TestLoginPage(passclass):
 
-
-    def clear(self, id_pw):
-        id_pw.click()
-        id_pw.clear()
+    def clear(self, Username_pw):
+        Username_pw.click()
+        Username_pw.clear()
 
     def test_logo_check(self) :
         assert self.swag.logo_visible() == True # 상단 로고가 노출되면 PASS
-        assert self.swag.input_id_placeholder == "Username" # ID Inputbox에 "Username" Text 노출되면 PASS
+
+    def test_Username_placeholder_check(self):
+        assert self.swag.input_Username_placeholder == "Username"
+
+    def test_pw_placeholder_check(self):# ID Inputbox에 "Username" Text 노출되면 PASS
         assert self.swag.input_pw_placeholder == "Password" # PW Inputbox에 "Username" Text 노출되면 PASS
 
-        error_msg_email_not_exist = "Username is required"
-        error_msg_password_not_exist = "Password is required"
-        error_msg_lock_account = "Sorry, this user has been locked out."
-        error_msg_id_pw_not_equal = "Username and password do not match any user in this service."
-        Login_button_text = "LOGIN"
-
+    def test_Username_not_exist(self):
         self.swag.login_button.click()
-        assert self.swag.login_err_msg_text() == error_msg_email_not_exist # "Username is required" 노출시 정상
+        assert self.swag.login_err_msg_text() == self.swag.error_msg_email_not_exist # "Username is required" 노출시 정상
+        self.clear(self.swag.input_Username), self.clear(self.swag.input_pw)
 
-        self.clear(self.swag.input_id), self.clear(self.swag.input_pw)
-
-        self.swag.type_id("standard_user")
+    def test_pw_not_exist(self):
+        self.swag.type_Username("standard_user")
         self.swag.login_button.click()
-        assert self.swag.login_err_msg_text() == error_msg_password_not_exist  # "password is required" 노출시 정상
+        assert self.swag.login_err_msg_text() == self.swag.error_msg_password_not_exist  # "password is required" 노출시 정상
+        self.clear(self.swag.input_Username), self.clear(self.swag.input_pw)
 
-        self.clear(self.swag.input_id), self.clear(self.swag.input_pw)
-
-        self.swag.type_id("locked_out_user")
+    def test_lock_out_user(self):
+        self.swag.type_Username("locked_out_user")
         self.swag.type_pw("secret_sauce")
         self.swag.login_button.click()
-        assert self.swag.login_err_msg_text() == error_msg_lock_account  # "Sorry, this user has been locked out." 노출시 정상
+        assert self.swag.login_err_msg_text() == self.swag.error_msg_lock_account  # "Sorry, this user has been locked out." 노출시 정상
+        self.clear(self.swag.input_Username), self.clear(self.swag.input_pw)
 
-        self.clear(self.swag.input_id), self.clear(self.swag.input_pw)
-
-        self.swag.type_id("standard_user")
+    def test_Username_pw_not_match(self):
+        self.swag.type_Username("standard_user")
         self.swag.type_pw("secret_sauc")
         self.swag.login_button.click()
-        assert self.swag.login_err_msg_text() == error_msg_id_pw_not_equal  # "Username and password do not match any user in the service." 노출시 정상
+        assert self.swag.login_err_msg_text() == self.swag.error_msg_Username_pw_not_equal  # "Username and password do not match any user in the service." 노출시 정상
 
+    def test_face_check_button_visible(self):
         assert self.swag.face_check_button_visible() == True # 하단에 Facecheck 버튼이 존재한다면 PASS
-        assert self.swag.login_button_name() == Login_button_text # LOGIN 이름과 일치하는 로그인 버튼이 있는 경우 PASS
+
+    def test_login_button_check(self):
+        assert self.swag.login_button_name() == self.swag.Login_button_text # LOGIN 이름과 일치하는 로그인 버튼이 있는 경우 PASS
+
+    def test_robot_image_check(self):
         assert self.swag.robot_image_visible() == True # 하단에 로봇 이미지 노출되면 PASS
 
-        self.clear(self.swag.input_id), self.clear(self.swag.input_pw)
 
-        self.swag.type_id("standard_user")
+    def test_login_check(self):
+        self.swag.type_Username("standard_user")
         self.swag.type_pw("secret_sauce")
         self.swag.login_button.click() # 정상 로그인
 

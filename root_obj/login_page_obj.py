@@ -11,7 +11,7 @@ class swaglabs_home:
         self.driver = driver
 
         self.logo = (AppiumBy.ACCESSIBILITY_ID, "test-biometry")
-        self.input_id_locator = (AppiumBy.ACCESSIBILITY_ID, "test-Username")
+        self.input_Username_locator = (AppiumBy.ACCESSIBILITY_ID, "test-Username")
         self.input_pw_locator = (AppiumBy.ACCESSIBILITY_ID, "test-Password")
         self.login_button_locator = (AppiumBy.ACCESSIBILITY_ID, "test-LOGIN")
         self.login_button_locator_text = (AppiumBy.XPATH,'//android.view.ViewGroup[@content-desc="test-LOGIN"]/android.widget.TextView')
@@ -19,6 +19,12 @@ class swaglabs_home:
         self.robot_image = (AppiumBy.XPATH,'//android.widget.ScrollView[@content-desc="test-Login"]/android.view.ViewGroup/android.widget.ImageView[2]')
         self.login_err_msg_locator = (AppiumBy.XPATH, '//*[@content-desc="test-Error message"]/*') # /* 를 붙여야 부모 요소 밑의 자식 텍스트를 읽음
         self.face_check = (AppiumBy.ACCESSIBILITY_ID, 'test-face-recognition')
+
+        self.error_msg_email_not_exist = "Username is required"
+        self.error_msg_password_not_exist = "Password is required"
+        self.error_msg_lock_account = "Sorry, this user has been locked out."
+        self.error_msg_Username_pw_not_equal = "Username and password do not match any user in this service."
+        self.Login_button_text = "LOGIN"
 
     def logo_visible(self):
         try:
@@ -35,12 +41,12 @@ class swaglabs_home:
         return self.driver.find_element(*self.login_button_locator)
 
     @property
-    def input_id(self):
-        return self.driver.find_element(*self.input_id_locator)
+    def input_Username(self):
+        return self.driver.find_element(*self.input_Username_locator)
 
     @property
-    def input_id_placeholder(self):
-        return self.input_id.get_attribute("hint")
+    def input_Username_placeholder(self):
+        return self.input_Username.get_attribute("hint")
 
     @property
     def input_pw(self):
@@ -50,10 +56,10 @@ class swaglabs_home:
     def input_pw_placeholder(self):
         return self.input_pw.get_attribute("hint")
 
-    def type_id(self, username: str): # 3줄 작성 될 클릭, 클리어, 아이디 입력 코드를 1줄로 압축한다.
-        self.input_id.click()
-        self.input_id.clear()
-        self.input_id.send_keys(username)
+    def type_Username(self, username: str): # 3줄 작성 될 클릭, 클리어, 아이디 입력 코드를 1줄로 압축한다.
+        self.input_Username.click()
+        self.input_Username.clear()
+        self.input_Username.send_keys(username)
 
     def type_pw(self, password: str): # 3줄 작성 될 클릭, 클리어, 패스워드 입력 코드를 1줄로 압축한다.
         self.input_pw.click()
