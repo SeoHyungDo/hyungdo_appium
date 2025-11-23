@@ -17,6 +17,15 @@ class swaglabs_main_page:
         self.input_pw_locator = (AppiumBy.ACCESSIBILITY_ID, "test-Password")
         self.login_button_locator = (AppiumBy.ACCESSIBILITY_ID, "test-LOGIN")
 
+        self.menu_all_items_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="ALL ITEMS"]')
+        self.menu_webview_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="WEBVIEW"]')
+        self.menu_qr_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="QR CODE SCANNER"]')
+        self.menu_geo_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="GEO LOCATION"]')
+        self.menu_drawing_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="DRAWING"]')
+        self.menu_about_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="ABOUT"]')
+        self.menu_logout_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="LOGOUT"]')
+        self.menu_reset_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="RESET APP STATE"]')
+
     @property
     def input_Username(self):
         return self.driver.find_element(*self.input_Username_locator)
@@ -40,5 +49,69 @@ class swaglabs_main_page:
         self.login_button.click()
 
     @property
-    def hamburger_menu(self):
+    def hamburger_menu_icon(self):
         return self.driver.find_element(*self.hamburger_menu_locator)
+
+    @property
+    def menu_all_items(self):
+        return self.driver.find_element(*self.menu_all_items_locator)
+
+    @property
+    def menu_all_items_text(self):
+        return self.driver.find_element(*self.menu_all_items_locator).text
+
+    @property
+    def menu_webview(self):
+        return self.driver.find_element(*self.menu_webview_locator)
+
+    @property
+    def menu_webview_text(self):
+        return self.driver.find_element(*self.menu_webview_locator).text
+
+    @property
+    def menu_qr(self):
+        return self.driver.find_element(*self.menu_qr_locator)
+
+    @property
+    def menu_qr_text(self):
+        return self.driver.find_element(*self.menu_qr_locator).text
+
+    @property
+    def menu_geo(self):
+        return self.driver.find_element(*self.menu_geo_locator)
+
+    @property
+    def menu_geo_text(self):
+        return self.driver.find_element(*self.menu_geo_locator).text
+
+    @property
+    def menu_drawing(self):
+        return self.driver.find_element(*self.menu_drawing_locator)
+
+    @property
+    def menu_drawing_text(self):
+        return self.driver.find_element(*self.menu_drawing_locator).text
+
+    @property
+    def menu_about(self):
+        return self.driver.find_element(*self.menu_about_locator)
+
+    @property
+    def menu_about_text(self):
+        return self.driver.find_element(*self.menu_about_locator).text
+
+    @property
+    def menu_logout(self):
+        return self.driver.find_element(*self.menu_logout_locator)
+
+    @property
+    def menu_logout_text(self):
+        return self.driver.find_element(*self.menu_logout_locator).text
+
+    @property
+    def menu_reset(self):
+        return self.driver.find_element(*self.menu_reset_locator)
+
+    @property
+    def menu_reset_text(self):
+        return self.driver.find_element(*self.menu_reset_locator).text
