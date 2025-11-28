@@ -5,6 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from root_obj.login_page_obj import swaglabs_home
 import time
+from utility.wait import Wait
 
 class swaglabs_main_page:
 
@@ -12,11 +13,14 @@ class swaglabs_main_page:
         self.driver = driver
 
         self.hamburger_menu_locator = (AppiumBy.XPATH,'//android.view.ViewGroup[@content-desc="test-Menu"]/android.view.ViewGroup')
+        self.top_logo_locator = (AppiumBy.XPATH,
+                        '//android.widget.FrameLayout[@resource-id="android:id/content"]/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[1]/android.widget.ImageView[2]')
 
         self.input_Username_locator = (AppiumBy.ACCESSIBILITY_ID, "test-Username")
         self.input_pw_locator = (AppiumBy.ACCESSIBILITY_ID, "test-Password")
         self.login_button_locator = (AppiumBy.ACCESSIBILITY_ID, "test-LOGIN")
 
+        self.exit_button_locator = (AppiumBy.ACCESSIBILITY_ID, 'test-Close')
         self.menu_all_items_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="ALL ITEMS"]')
         self.menu_webview_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="WEBVIEW"]')
         self.menu_qr_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="QR CODE SCANNER"]')
@@ -25,6 +29,7 @@ class swaglabs_main_page:
         self.menu_about_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="ABOUT"]')
         self.menu_logout_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="LOGOUT"]')
         self.menu_reset_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="RESET APP STATE"]')
+        self.cart_locator = (AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Cart drop zone"]')
 
     @property
     def input_Username(self):
@@ -93,6 +98,14 @@ class swaglabs_main_page:
         return self.driver.find_element(*self.menu_drawing_locator).text
 
     @property
+    def menu_close(self):
+        return self.driver.find_element(*self.exit_button_locator)
+
+    def close_menu_if_open(self):
+        if self.driver.find_elements(*self.exit_button_locator):
+            self.menu_close.click()
+
+    @property
     def menu_about(self):
         return self.driver.find_element(*self.menu_about_locator)
 
@@ -115,3 +128,15 @@ class swaglabs_main_page:
     @property
     def menu_reset_text(self):
         return self.driver.find_element(*self.menu_reset_locator).text
+
+    @property
+    def top_logo(self):
+        return self.driver.find_element(*self.top_logo_locator)
+
+    @property
+    def cart_button(self):
+        return self.driver.find_element(*self.cart_locator)
+
+    def cart_button_click(self):
+        if self.driver.find_element(*self.cart_button) :
+            self.cart_button.click()

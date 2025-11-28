@@ -39,3 +39,9 @@ class TestMainpage(passclass):
 
     def test_hamburger_menu_reset_app_state_text(self):
         assert self.swag_home.menu_reset_text == "RESET APP STATE"
+
+    def test_top_logo_display(self):
+        assert self.swag_home.top_logo.is_displayed()
+
+    def test_cart_button_display(self):
+        assert self.swag_home.cart_button.is_displayed()
