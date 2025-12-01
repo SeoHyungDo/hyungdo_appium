@@ -53,4 +53,4 @@ class TestMainpage(passclass):
         assert self.swag_home.text_modal_selector_button.is_displayed()
 
     def test_first_product_image_display(self):
-        assert self.swag_home.first_product_image_displaye.is_displayed()
+        assert self.swag_home.first_product_image_displayed.is_displayed()
