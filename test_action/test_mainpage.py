@@ -45,3 +45,12 @@ class TestMainpage(passclass):
 
     def test_cart_button_display(self):
         assert self.swag_home.cart_button.is_displayed()
+
+    def test_product_text(self):
+        assert self.swag_home.product_text_check == "PRODUCTS"
+
+    def test_text_modal_selector_button_check(self):
+        assert self.swag_home.text_modal_selector_button.is_displayed()
+
+    def test_first_product_image_display(self):
+        assert self.swag_home.first_product_image_displaye.is_displayed()

@@ -30,6 +30,10 @@ class swaglabs_main_page:
         self.menu_logout_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="LOGOUT"]')
         self.menu_reset_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="RESET APP STATE"]')
         self.cart_locator = (AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Cart drop zone"]')
+        self.product_text = (AppiumBy.XPATH, '//android.widget.TextView[@text="PRODUCTS"]')
+        self.text_modal_selector = (AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Modal Selector Button"]')
+
+        self.first_product_image = (AppiumBy.XPATH, '(//android.view.ViewGroup[@content-desc="test-Item"])[1]/android.view.ViewGroup/android.widget.ImageView')
 
     @property
     def input_Username(self):
@@ -140,3 +144,20 @@ class swaglabs_main_page:
     def cart_button_click(self):
         if self.driver.find_element(*self.cart_button) :
             self.cart_button.click()
+
+    @property
+    def product_text_check(self):
+        return self.driver.find_element(*self.product_text).text
+
+    @property
+    def text_modal_selector_button(self):
+        return self.driver.find_element(*self.text_modal_selector)
+
+    def text_modal_selector_button_click(self):
+        if self.driver.find_element(*self.text_modal_selector_button) :
+            self.text_modal_selector_button.click()
+
+
+    @property
+    def first_product_image_displayed(self):
+        return self.driver.find_element(*self.first_product_image)
