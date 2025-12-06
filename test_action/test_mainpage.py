@@ -54,9 +54,7 @@ class TestMainpage(passclass):
     def test_text_modal_selector_button_check(self):
         assert self.swag_home.text_modal_selector_button.is_displayed()
 
-    # -----------------------------
-    # 1st product - Sauce Labs Backpack
-    # -----------------------------
+
     def test_first_product_image_display(self):
         self.swag_home.scroll_until_text("Sauce Labs Backpack")
         assert self.swag_home.first_product_image_displayed.is_displayed()
@@ -73,9 +71,7 @@ class TestMainpage(passclass):
         self.swag_home.scroll_until_text("Sauce Labs Backpack")
         assert self.swag_home.first_product_add_to_cart_button_click_obj.text == "ADD TO CART"
 
-    # -----------------------------
-    # 2nd product - Sauce Labs Bike Light
-    # -----------------------------
+
     def test_second_product_image_display(self):
         self.swag_home.scroll_until_text("Sauce Labs Bike Light")
         assert self.swag_home.second_product_image_displayed.is_displayed()
@@ -92,9 +88,7 @@ class TestMainpage(passclass):
         self.swag_home.scroll_until_text("Sauce Labs Bike Light")
         assert self.swag_home.second_product_add_to_cart_button_click_obj.text == "ADD TO CART"
 
-    # -----------------------------
-    # 3rd product - Sauce Labs Bolt T-Shirt
-    # -----------------------------
+
     def test_third_product_image_display(self):
         self.swag_home.scroll_until_text("Sauce Labs Bolt T-Shirt")
         assert self.swag_home.third_product_image_displayed.is_displayed()
@@ -111,9 +105,8 @@ class TestMainpage(passclass):
         self.swag_home.scroll_until_text("Sauce Labs Bolt T-Shirt")
         assert self.swag_home.third_product_add_to_cart_button_click_obj.text == "ADD TO CART"
 
-    # -----------------------------
-    # 4th product - Sauce Labs Fleece Jacket
-    # -----------------------------
+
+
     def test_fourth_product_image_display(self):
         self.swag_home.scroll_until_text("Sauce Labs Fleece Jacket")
         assert self.swag_home.fourth_product_image_displayed.is_displayed()
@@ -130,9 +123,7 @@ class TestMainpage(passclass):
         self.swag_home.scroll_until_text("Sauce Labs Fleece Jacket")
         assert self.swag_home.fourth_product_add_to_cart_button_click_obj.text == "ADD TO CART"
 
-    # -----------------------------
-    # 5th product - Sauce Labs Onesie
-    # -----------------------------
+
     def test_fifth_product_image_display(self):
         self.swag_home.scroll_until_text("Sauce Labs Onesie")
         assert self.swag_home.fifth_product_image_displayed.is_displayed()
@@ -165,3 +156,19 @@ class TestMainpage(passclass):
     def test_sixth_product_add_to_cart_button_text_check(self):
         self.swag_home.scroll_until_text("Test.allTheThings() T-Shirt (Red)")
         assert self.swag_home.sixth_product_add_to_cart_button_click_obj.text == "ADD TO CART"
+
+    def test_X_button_check(self):
+        btn = self.swag_home.get_bottom_button("x")
+        assert btn.is_displayed()
+
+    def test_facebook_button_check(self):
+        btn = self.swag_home.get_bottom_button("facebook")
+        assert btn.is_displayed()
+
+    def test_google_button_check(self):
+        btn = self.swag_home.get_bottom_button("google")
+        assert btn.is_displayed()
+
+    def test_LinkedIn_button_check(self):
+        btn = self.swag_home.get_bottom_button("linkedin")
+        assert btn.is_displayed()

@@ -28,7 +28,7 @@ class swaglabs_main_page:
         self.product_text = (AppiumBy.XPATH, '//android.widget.TextView[@text="PRODUCTS"]')
         self.text_modal_selector = (
         AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Modal Selector Button"]')
-
+        self.button_area = (AppiumBy.XPATH,'//android.widget.ScrollView[@content-desc="test-PRODUCTS"]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/*')
 
         self.first_product_image = (
             AppiumBy.XPATH,
@@ -169,6 +169,36 @@ class swaglabs_main_page:
             '//android.widget.TextView[@text="ADD TO CART"]'
         )
 
+        self.bottom_buttons_area = (
+            AppiumBy.XPATH,
+            '//android.widget.ScrollView[@content-desc="test-PRODUCTS"]'
+            '/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup'
+        )
+
+        # 버튼 별칭 매핑 (원하면 key 이름 마음대로 바꿔도 됨)
+        self.BUTTON_INDEX = {
+            "x": 0,
+            "facebook": 1,
+            "google": 2,
+            "linkedin": 3
+        }
+
+    def get_bottom_button_by_index(self, index: int):
+        container = self.driver.find_element(*self.bottom_buttons_area)
+        buttons = container.find_elements(AppiumBy.CLASS_NAME, "android.widget.TextView")
+
+        if index >= len(buttons):
+            raise Exception(f"요청한 index {index} 가 버튼 갯수({len(buttons)})보다 큼.")
+
+        return buttons[index]
+
+    def get_bottom_button(self, name: str):
+        if name not in self.BUTTON_INDEX:
+            raise KeyError(f"등록되지 않은 버튼 키: {name}, 등록된 키: {list(self.BUTTON_INDEX.keys())}")
+
+        idx = self.BUTTON_INDEX[name]
+        return self.get_bottom_button_by_index(idx)
+
     def scroll_until_text(self, text):
         self.driver.find_element(
             AppiumBy.ANDROID_UIAUTOMATOR,
@@ -219,7 +249,6 @@ class swaglabs_main_page:
         """
         self.scroll_until_text(product_name)
 
-        # 제목 TextView 요소 찾기 (이건 이미 잘 동작하는 패턴)
         title_el = self.driver.find_element(
             AppiumBy.XPATH,
             f'//android.widget.TextView[@content-desc="test-Item title" and @text="{product_name}"]'
@@ -240,6 +269,7 @@ class swaglabs_main_page:
                     break
 
         raise Exception(f'상품 "{product_name}" 에 대한 이미지를 찾지 못했습니다.')
+
 
     @property
     def input_Username(self):
