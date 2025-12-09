@@ -29,6 +29,8 @@ class swaglabs_main_page:
         self.text_modal_selector = (
         AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Modal Selector Button"]')
         self.button_area = (AppiumBy.XPATH,'//android.widget.ScrollView[@content-desc="test-PRODUCTS"]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/*')
+        self.reserved_text_area = (AppiumBy.XPATH,'//android.widget.TextView[@text="© 2025 Sauce Labs. All Rights Reserved."]')
+        self.policy_text_area = (AppiumBy.XPATH,'//android.widget.TextView[@text="Terms of Service | Privacy Policy"]')
 
         self.first_product_image = (
             AppiumBy.XPATH,
@@ -175,7 +177,7 @@ class swaglabs_main_page:
             '/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup'
         )
 
-        # 버튼 별칭 매핑 (원하면 key 이름 마음대로 바꿔도 됨)
+        # 버튼 별칭 매핑
         self.BUTTON_INDEX = {
             "x": 0,
             "facebook": 1,
@@ -555,3 +557,11 @@ class swaglabs_main_page:
     @property
     def sixth_product_add_to_cart_button_click(self):
         return self.sixth_product_add_to_cart_button_click_obj.click()
+
+    @property
+    def reserved_text_obj(self):
+        return self.driver.find_element(*self.reserved_text_area).text
+
+    @property
+    def policy_text_obj(self):
+        return self.driver.find_element(*self.policy_text_area).text

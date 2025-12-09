@@ -172,3 +172,10 @@ class TestMainpage(passclass):
     def test_LinkedIn_button_check(self):
         btn = self.swag_home.get_bottom_button("linkedin")
         assert btn.is_displayed()
+
+    def test_reserved_text_check(self):
+        self.swag_home.scroll_until_text("© 2025 Sauce Labs. All Rights Reserved.")
+        assert self.swag_home.reserved_text_obj == "© 2025 Sauce Labs. All Rights Reserved."
+
+    def test_policy_text_check(self):
+        assert self.swag_home.policy_text_obj == "Terms of Service | Privacy Policy"
