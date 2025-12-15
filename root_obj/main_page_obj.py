@@ -118,6 +118,7 @@ class swaglabs_main_page:
             '[.//android.widget.TextView[@text="Sauce Labs Fleece Jacket"]]'
             '//android.widget.TextView[@content-desc="test-Price"]'
         )
+
         self.fourth_product_add_to_cart_button = (
             AppiumBy.XPATH,
             '//android.view.ViewGroup[@content-desc="test-Item"]'
@@ -424,8 +425,8 @@ class swaglabs_main_page:
         return self.driver.find_element(*self.first_product_add_to_cart_button)
 
     @property
-    def first_product_add_to_cart_button_click(self):
-        return self.first_product_add_to_cart_button_click_obj.click()
+    def first_product_add_to_cart_button_el(self):
+        return self.driver.find_element(*self.first_product_add_to_cart_button)
 
 # Second
 
@@ -450,8 +451,8 @@ class swaglabs_main_page:
         return self.driver.find_element(*self.second_product_add_to_cart_button)
 
     @property
-    def second_product_add_to_cart_button_click(self):
-        return self.second_product_add_to_cart_button_click_obj.click()
+    def second_product_add_to_cart_button_el(self):
+        return self.driver.find_element(*self.second_product_add_to_cart_button)
 
 
 # third
@@ -476,8 +477,9 @@ class swaglabs_main_page:
         return self.driver.find_element(*self.third_product_add_to_cart_button)
 
     @property
-    def third_product_add_to_cart_button_click(self):
-        return self.third_product_add_to_cart_button_click_obj.click()
+    def third_product_add_to_cart_button_el(self):
+        return self.driver.find_element(*self.third_product_add_to_cart_button)
+
 
 # fourth
 # 3, 4번만 같은 방식으로 했을때 에러가 나서 바꿔 놓음
@@ -502,8 +504,8 @@ class swaglabs_main_page:
         return self.driver.find_element(*self.fourth_product_add_to_cart_button)
 
     @property
-    def fourth_product_add_to_cart_button_click(self):
-        return self.fourth_product_add_to_cart_button_click_obj.click()
+    def fourth_product_add_to_cart_button_el(self):
+        return self.driver.find_element(*self.fourth_product_add_to_cart_button)
 
 
 # fifth
@@ -528,8 +530,8 @@ class swaglabs_main_page:
         return self.driver.find_element(*self.fifth_product_add_to_cart_button)
 
     @property
-    def fifth_product_add_to_cart_button_click(self):
-        return self.fifth_product_add_to_cart_button_click_obj.click()
+    def fifth_product_add_to_cart_button_el(self):
+        return self.driver.find_element(*self.fifth_product_add_to_cart_button)
 
 
 
@@ -555,8 +557,8 @@ class swaglabs_main_page:
         return self.driver.find_element(*self.sixth_product_add_to_cart_button)
 
     @property
-    def sixth_product_add_to_cart_button_click(self):
-        return self.sixth_product_add_to_cart_button_click_obj.click()
+    def sixth_product_add_to_cart_button_el(self):
+        return self.driver.find_element(*self.sixth_product_add_to_cart_button)
 
     @property
     def reserved_text_obj(self):

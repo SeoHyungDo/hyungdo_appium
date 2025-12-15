@@ -4,6 +4,7 @@ from appium.options.android import UiAutomator2Options
 from root_obj.login_page_obj import swaglabs_home
 from root_obj.main_page_obj import swaglabs_main_page
 from utility.wait import Wait
+from root_obj.cart_page_obj import cart_page
 
 @pytest.fixture(scope="class")
 def setup(request):
@@ -26,6 +27,7 @@ def setup(request):
     request.cls.swag = swaglabs_home(driver)
     request.cls.swag_home = swaglabs_main_page(driver)
     request.cls.wait = Wait(driver)
+    request.cls.cart = cart_page(driver)
 
     yield driver
 

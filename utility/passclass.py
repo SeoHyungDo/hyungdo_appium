@@ -6,3 +6,4 @@ class passclass :
     swag = None
     wait = None
     swag_home = None
+    cart = None
