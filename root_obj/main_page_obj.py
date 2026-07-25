@@ -29,7 +29,7 @@ class swaglabs_main_page:
         self.text_modal_selector = (
         AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Modal Selector Button"]')
         self.button_area = (AppiumBy.XPATH,'//android.widget.ScrollView[@content-desc="test-PRODUCTS"]/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup/*')
-        self.reserved_text_area = (AppiumBy.XPATH,'//android.widget.TextView[@text="© 2025 Sauce Labs. All Rights Reserved."]')
+        self.reserved_text_area = (AppiumBy.XPATH,'//android.widget.TextView[@text="© 2026 Sauce Labs. All Rights Reserved."]')
         self.policy_text_area = (AppiumBy.XPATH,'//android.widget.TextView[@text="Terms of Service | Privacy Policy"]')
 
         self.first_product_image = (
