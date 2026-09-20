@@ -29,7 +29,7 @@ class TestMainpage(passclass):
     def test_hamburger_menu_geo_location_text(self):
         assert self.swag_home.menu_geo_text == "GEO LOCATION"
 
-    def test_hamburger_menu_Drawing_text(self):
+    def test_hamburger_menu_drawing_text(self):
         assert self.swag_home.menu_drawing_text == "DRAWING"
 
     def test_hamburger_menu_about_text(self):
@@ -157,7 +157,7 @@ class TestMainpage(passclass):
         self.swag_home.scroll_until_text("Test.allTheThings() T-Shirt (Red)")
         assert self.swag_home.sixth_product_add_to_cart_button_click_obj.text == "ADD TO CART"
 
-    def test_X_button_check(self):
+    def test_x_button_check(self):
         btn = self.swag_home.get_bottom_button("x")
         assert btn.is_displayed()
 
@@ -169,7 +169,7 @@ class TestMainpage(passclass):
         btn = self.swag_home.get_bottom_button("google")
         assert btn.is_displayed()
 
-    def test_LinkedIn_button_check(self):
+    def test_linkedin_button_check(self):
         btn = self.swag_home.get_bottom_button("linkedin")
         assert btn.is_displayed()
 

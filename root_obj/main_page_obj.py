@@ -24,7 +24,7 @@ class swaglabs_main_page:
         self.menu_about_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="ABOUT"]')
         self.menu_logout_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="LOGOUT"]')
         self.menu_reset_locator = (AppiumBy.XPATH, '//android.widget.TextView[@text="RESET APP STATE"]')
-        self.cart_locator = (AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Cart drop zone"]')
+        self.cart_locator = (AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Cart"]/android.view.ViewGroup/android.widget.ImageView')
         self.product_text = (AppiumBy.XPATH, '//android.widget.TextView[@text="PRODUCTS"]')
         self.text_modal_selector = (
         AppiumBy.XPATH, '//android.view.ViewGroup[@content-desc="test-Modal Selector Button"]')
@@ -567,3 +567,7 @@ class swaglabs_main_page:
     @property
     def policy_text_obj(self):
         return self.driver.find_element(*self.policy_text_area).text
+
+    @property
+    def cart_locator_button_el_obj(self):
+        return self.driver.find_element(*self.cart_locator)

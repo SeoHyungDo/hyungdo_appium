@@ -41,12 +41,12 @@ class swaglabs_home:
         return self.driver.find_element(*self.login_button_locator)
 
     @property
-    def input_Username(self):
+    def input_username(self):
         return self.driver.find_element(*self.input_Username_locator)
 
     @property
-    def input_Username_placeholder(self):
-        return self.input_Username.get_attribute("hint")
+    def input_username_placeholder(self):
+        return self.input_username.get_attribute("hint")
 
     @property
     def input_pw(self):
@@ -56,10 +56,10 @@ class swaglabs_home:
     def input_pw_placeholder(self):
         return self.input_pw.get_attribute("hint")
 
-    def type_Username(self, username: str): # 3줄 작성 될 클릭, 클리어, 아이디 입력 코드를 1줄로 압축한다.
-        self.input_Username.click()
-        self.input_Username.clear()
-        self.input_Username.send_keys(username)
+    def type_username(self, username: str): # 3줄 작성 될 클릭, 클리어, 아이디 입력 코드를 1줄로 압축한다.
+        self.input_username.click()
+        self.input_username.clear()
+        self.input_username.send_keys(username)
 
     def type_pw(self, password: str): # 3줄 작성 될 클릭, 클리어, 패스워드 입력 코드를 1줄로 압축한다.
         self.input_pw.click()
