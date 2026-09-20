@@ -20,32 +20,42 @@ class Testcartpage(passclass):
         self.swag_home.cart_locator_button_el_obj.click()
 
     def test_cart_hamburger_menu_check(self):
-        assert self.cart.hamburger_button_exist_check is not None
+        assert self.cart.cart_hamburger_button_exist_check is not None
+
+    #로딩이 너무 빨라 Fail이 나는 경우가 있어 명시적 대기 세팅
+    def cart_menu_all_items_text(self):
+        element = WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located(
+                self.cart.cart_menu_all_items_locator
+            )
+        )
+        return element.text
 
     def test_cart_hamburger_menu_all_items_text(self):
-        self.swag_home.hamburger_menu_icon.click()
-        assert self.swag_home.menu_all_items_text == "ALL ITEMS"
+        self.cart.cart_hamburger_button_action.click()
+
+        assert self.cart.cart_menu_all_items_text == "ALL ITEMS"
 
     def test_cart_hamburger_menu_webview_text(self):
-        assert self.swag_home.menu_webview_text == "WEBVIEW"
+        assert self.cart.cart_menu_webview_text == "WEBVIEW"
 
     def test_cart_hamburger_menu_qr_code_scanner_text(self):
-        assert self.swag_home.menu_qr_text == "QR CODE SCANNER"
+        assert self.cart.cart_menu_qr_text == "QR CODE SCANNER"
 
     def test_cart_hamburger_menu_geo_location_text(self):
-        assert self.swag_home.menu_geo_text == "GEO LOCATION"
+        assert self.cart.cart_menu_geo_text == "GEO LOCATION"
 
     def test_cart_hamburger_menu_drawing_text(self):
-        assert self.swag_home.menu_drawing_text == "DRAWING"
+        assert self.cart.cart_menu_drawing_text == "DRAWING"
 
     def test_cart_hamburger_menu_about_text(self):
-        assert self.swag_home.menu_about_text == "ABOUT"
+        assert self.cart.cart_menu_about_text == "ABOUT"
 
     def test_cart_hamburger_menu_logout_text(self):
-        assert self.swag_home.menu_logout_text == "LOGOUT"
+        assert self.cart.cart_menu_logout_text == "LOGOUT"
 
-    def test_cart_amburger_menu_reset_app_state_text(self):
-        assert self.swag_home.menu_reset_text == "RESET APP STATE"
+    def test_cart_hamburger_menu_reset_app_state_text(self):
+        assert self.cart.cart_menu_reset_text == "RESET APP STATE"
 
     def test_cart_top_logo_display(self):
         self.swag_home.close_menu_if_open()

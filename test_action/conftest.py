@@ -8,6 +8,8 @@ from root_obj.cart_page_obj import cart_page
 import subprocess # 연결기기 탐색
 from datetime import datetime # 스크린샷 자동으로 남기기
 import os
+import allure
+
 
 def get_connected_device(): # 연결된 기기 자동 탐색
     result = subprocess.run(
@@ -54,6 +56,13 @@ def pytest_runtest_makereport(item, call):
             file_name = f"screenshots/{item.name}_{now}.png"
 
             driver.save_screenshot(file_name)
+
+            # ⭐ Allure 리포트에 실패 스크린샷 첨부
+            allure.attach.file(
+                file_name,
+                name="Failure Screenshot",
+                attachment_type=allure.attachment_type.PNG
+            )
 
             print(f"\n📸 실패 스크린샷 저장: {file_name}")
 
