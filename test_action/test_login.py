@@ -26,7 +26,6 @@ class TestLoginPage(passclass):
     def test_username_not_exist(self):
         self.swag.login_button.click()
         assert self.swag.login_err_msg_text() == self.swag.error_msg_email_not_exist # "Username is required" 노출시 정상
-        self.clear(self.swag.input_username), self.clear(self.swag.input_pw)
 
     def test_pw_not_exist(self):
         self.swag.type_username("standard_user")
