@@ -2,3 +2,6 @@ pytest
 Appium-Python-Client
 selenium
 allure-pytest
+requests
+slack-bolt
+python-dotenv
