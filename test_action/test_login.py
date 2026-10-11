@@ -1,3 +1,4 @@
+import allure
 import pytest
 from appium.webdriver.common.appiumby import AppiumBy
 from selenium.webdriver.common.keys import Keys
@@ -14,12 +15,15 @@ class TestLoginPage(passclass):
         username_pw.click()
         username_pw.clear()
 
+    @allure.step("로그인 페이지 > 상단 로고 노출 여부 확인")
     def test_logo_check(self) :
         assert self.swag.logo_visible() == True # 상단 로고가 노출되면 PASS
 
+    @allure.step("로그인 페이지 > username textbox placeholder 'Username'으로 정상 노출 되는지 확인")
     def test_username_placeholder_check(self):
         assert self.swag.input_username_placeholder == "Username"
 
+    @allure.step("로그인 페이지 > password textbox placeholder 'Password'으로 정상 노출 되는지 확인")
     def test_pw_placeholder_check(self):# ID Inputbox에 "Username" Text 노출되면 PASS
         assert self.swag.input_pw_placeholder == "Password" # PW Inputbox에 "Username" Text 노출되면 PASS
 
