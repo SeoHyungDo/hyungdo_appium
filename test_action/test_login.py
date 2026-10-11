@@ -27,22 +27,22 @@ class TestLoginPage(passclass):
     def test_pw_placeholder_check(self):# ID Inputbox에 "Username" Text 노출되면 PASS
         assert self.swag.input_pw_placeholder == "Password" # PW Inputbox에 "Username" Text 노출되면 PASS
 
+    @allure.step("로그인 페이지 > Username 미입력 상태로 로그인을 눌렀을시 'Username is required' 문구가 노출되면 정상")
     def test_username_not_exist(self):
         self.swag.login_button.click()
         assert self.swag.login_err_msg_text() == self.swag.error_msg_email_not_exist # "Username is required" 노출시 정상
 
+    @allure.step("로그인 페이지 > Username은 입력, Password 미입력 상태로 로그인을 눌렀을시 password is required 문구가 노출되면 정상")
     def test_pw_not_exist(self):
         self.swag.type_username("standard_user")
         self.swag.login_button.click()
         assert self.swag.login_err_msg_text() == self.swag.error_msg_password_not_exist  # "password is required" 노출시 정상
-        self.clear(self.swag.input_username), self.clear(self.swag.input_pw)
 
     def test_lock_out_user(self):
         self.swag.type_username("locked_out_user")
         self.swag.type_pw("secret_sauce")
         self.swag.login_button.click()
         assert self.swag.login_err_msg_text() == self.swag.error_msg_lock_account  # "Sorry, this user has been locked out." 노출시 정상
-        self.clear(self.swag.input_username), self.clear(self.swag.input_pw)
 
     def test_username_pw_not_match(self):
         self.swag.type_username("standard_user")
