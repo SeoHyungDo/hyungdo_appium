@@ -137,67 +137,81 @@ class TestMainpage(passclass):
         self.swag_home.scroll_until_text("Sauce Labs Fleece Jacket")
         assert self.swag_home.fourth_product_name_text == "Sauce Labs Fleece Jacket"
 
+    @allure.step("메인 페이지 > 네번째 상품 가격이 '$49.99'로 노출되는 경우 정상")
     def test_fourth_product_price_check(self):
         self.swag_home.scroll_until_text("Sauce Labs Fleece Jacket")
         assert self.swag_home.fourth_product_price_text == "$49.99"
 
+    @allure.step("메인 페이지 > 네번째 상품 하단에 'ADD TO CART' 버튼이 노출되는 경우 정상")
     def test_fourth_product_add_to_cart_button_text_check(self):
         self.swag_home.scroll_until_text("Sauce Labs Fleece Jacket")
         assert self.swag_home.fourth_product_add_to_cart_button_click_obj.text == "ADD TO CART"
 
-
+    @allure.step("메인 페이지 > 다섯번째 상품 이미지 노출되는 경우 정상")
     def test_fifth_product_image_display(self):
         self.swag_home.scroll_until_text("Sauce Labs Onesie")
         assert self.swag_home.fifth_product_image_displayed.is_displayed()
 
+    @allure.step("메인 페이지 > 다섯번째 상품 상품명 'Sauce Labs Onesie' 로 노출되는 경우 정상")
     def test_fifth_product_name_check(self):
         self.swag_home.scroll_until_text("Sauce Labs Onesie")
         assert self.swag_home.fifth_product_name_text == "Sauce Labs Onesie"
 
+    @allure.step("메인 페이지 > 다섯번째 상품 가격이 '$7.99' 로 노출되는 경우 정상")
     def test_fifth_product_price_check(self):
         self.swag_home.scroll_until_text("Sauce Labs Onesie")
         assert self.swag_home.fifth_product_price_text == "$7.99"
 
+    @allure.step("메인 페이지 > 다섯번째 상품 하단에 'ADD TO CART' 버튼이 노출되는 경우 정상")
     def test_fifth_product_add_to_cart_button_text_check(self):
         self.swag_home.scroll_until_text("Sauce Labs Onesie")
         assert self.swag_home.fifth_product_add_to_cart_button_click_obj.text == "ADD TO CART"
 
-
+    @allure.step("메인 페이지 > 여섯번쨰 상품 이미지가 정상 노출되는 경우 정상")
     def test_sixth_product_image_display(self):
         self.swag_home.scroll_until_text("Test.allTheThings() T-Shirt (Red)")
         assert self.swag_home.sixth_product_image_displayed.is_displayed()
 
+    @allure.step("메인 페이지 > 여섯번쨰 상품 상품명이 'Test.allTheThings() T-Shirt (Red)'로 노출되는 경우 정상")
     def test_sixth_product_name_check(self):
         self.swag_home.scroll_until_text("Test.allTheThings() T-Shirt (Red)")
         assert self.swag_home.sixth_product_name_text == "Test.allTheThings() T-Shirt (Red)"
 
+    @allure.step("메인 페이지 > 여섯번쨰 상품 가격이 '$15.99'로 노출되는 경우 정상")
     def test_sixth_product_price_check(self):
         self.swag_home.scroll_until_text("Test.allTheThings() T-Shirt (Red)")
         assert self.swag_home.sixth_product_price_text == "$15.99"
 
+    @allure.step("메인 페이지 > 여섯번쨰 상품 하단에 'ADD TO CART' 버튼이 노출되는 경우 정상")
     def test_sixth_product_add_to_cart_button_text_check(self):
         self.swag_home.scroll_until_text("Test.allTheThings() T-Shirt (Red)")
         assert self.swag_home.sixth_product_add_to_cart_button_click_obj.text == "ADD TO CART"
 
+    @allure.step("메인 페이지 > 최하단에 'X' 버튼이 노출되는 경우 정상")
     def test_x_button_check(self):
         btn = self.swag_home.get_bottom_button("x")
         assert btn.is_displayed()
 
+    @allure.step("메인 페이지 > 최하단에 'facebook' 버튼이 노출되는 경우 정상")
     def test_facebook_button_check(self):
         btn = self.swag_home.get_bottom_button("facebook")
         assert btn.is_displayed()
 
+    @allure.step("메인 페이지 > 최하단에 'google' 버튼이 노출되는 경우 정상")
     def test_google_button_check(self):
         btn = self.swag_home.get_bottom_button("google")
         assert btn.is_displayed()
 
+    @allure.step("메인 페이지 > 최하단에 'linkedin' 버튼이 노출되는 경우 정상")
     def test_linkedin_button_check(self):
         btn = self.swag_home.get_bottom_button("linkedin")
         assert btn.is_displayed()
 
+    @allure.step("메인 페이지 > 최하단에 '© 2026 Sauce Labs. All Rights Reserved.' 문구가 노출되는 경우 정상")
     def test_reserved_text_check(self):
         self.swag_home.scroll_until_text("© 2026 Sauce Labs. All Rights Reserved.")
         assert self.swag_home.reserved_text_obj == "© 2026 Sauce Labs. All Rights Reserved."
 
+    @allure.step("메인 페이지 > 최하단에 'Terms of Service | Privacy Policy' 문구가 노출되는 경우 정상")
     def test_policy_text_check(self):
         assert self.swag_home.policy_text_obj == "Terms of Service | Privacy Policy"
